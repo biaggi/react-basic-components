@@ -1,27 +1,27 @@
-import { CounterAction } from "../actions/counter.actions";
+import * as actions from "../actions/counter.actions";
 import { CounterState } from "../interfaces/counter.interfaces";
 
 export const counterReducer = (
   state: CounterState,
-  action: CounterAction
+  action: actions.CounterAction
 ): CounterState => {
   const { type } = action;
   switch (type) {
-    case "decrease":
+    case actions.ActionEnum.increase:
       return {
         ...state,
         counter: state.counter - 1,
         previous: state.counter,
         changes: state.changes + 1,
       };
-    case "increase":
+    case actions.ActionEnum.decrease:
       return {
         ...state,
         counter: state.counter + 1,
         previous: state.counter,
         changes: state.changes + 1,
       };
-    case "increaseBy":
+    case actions.ActionEnum.increaseBy:
       return {
         ...state,
         counter: state.counter + action.payload,
